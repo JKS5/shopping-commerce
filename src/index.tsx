@@ -1,15 +1,43 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+
+import NotFound from "./Pages/NotFound";
+import Category from "./Pages/Category";
+import Clothes from "./Pages/Clothes";
+import ClothesDetail from "./Pages/ClothesDetail";
+import Cart from "./Pages/Cart";
+import Write from "./Pages/Write";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <NotFound />,
+    children: [
+      { path: "/", element: <Clothes /> },
+      { path: "/clothes", element: <Clothes /> },
+      { path: "/clothes/men", element: <Category /> },
+      { path: "/clothes/women", element: <Category /> },
+      { path: "/clothes/men/:keyword", element: <Clothes /> },
+      { path: "/clothes/women/:keyword", element: <Clothes /> },
+      { path: "/clothes/detail/:clothesId", element: <ClothesDetail /> },
+      { path: "/clothes/detail/:clothesId", element: <ClothesDetail /> },
+      { path: "/user/myCart", element: <Cart /> },
+      { path: "/admin/write", element: <Write /> },
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
