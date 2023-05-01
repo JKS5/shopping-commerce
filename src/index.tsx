@@ -5,12 +5,12 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+import Home from "./Pages/Home";
 import NotFound from "./Pages/NotFound";
-import Category from "./Pages/Category";
-import Clothes from "./Pages/Clothes";
-import ClothesDetail from "./Pages/ClothesDetail";
-import Cart from "./Pages/Cart";
-import Write from "./Pages/Write";
+import AllProducts from "./Pages/AllProducts";
+import MyCart from "./Pages/MyCart";
+import NewProduct from "./Pages/NewProduct";
+import ProductDetail from "./Pages/ProductDetail";
 
 const router = createBrowserRouter([
   {
@@ -18,16 +18,11 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <NotFound />,
     children: [
-      { path: "/", element: <Clothes /> },
-      { path: "/clothes", element: <Clothes /> },
-      { path: "/clothes/men", element: <Category /> },
-      { path: "/clothes/women", element: <Category /> },
-      { path: "/clothes/men/:keyword", element: <Clothes /> },
-      { path: "/clothes/women/:keyword", element: <Clothes /> },
-      { path: "/clothes/detail/:clothesId", element: <ClothesDetail /> },
-      { path: "/clothes/detail/:clothesId", element: <ClothesDetail /> },
-      { path: "/user/myCart", element: <Cart /> },
-      { path: "/admin/write", element: <Write /> },
+      { index: true, path: "/", element: <Home /> },
+      { path: "/products", element: <AllProducts /> },
+      { path: "/products/:id", element: <ProductDetail /> },
+      { path: "/products/new", element: <NewProduct /> },
+      { path: "/carts", element: <MyCart /> },
     ],
   },
 ]);
