@@ -7,6 +7,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
 } from "firebase/auth";
+import { getDatabase, ref, child, get } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -19,48 +20,46 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
+// const database = getDatabase();
+const dbRef = ref(getDatabase());
 
-export async function login() {
-  return signInWithPopup(auth, provider)
-    .then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
-      console.log(user);
-      return user;
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
-    })
-    .catch((error) => {
-      return console.error;
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.customData.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
-    });
+export function login() {
+  provider.setCustomParameters({
+    prompt: "select_account",
+  });
+  signInWithPopup(auth, provider).catch(console.error);
 }
 
 export async function logout() {
-  signOut(auth)
-    .then(() => {
-      console.log("successful");
-      return null;
-      // Sign-out successful.
-    })
-    .catch((error) => {
-      console.log(error);
-
-      // An error happened.
-    });
+  signOut(auth).catch(console.error);
 }
 export function onUserStateChange(callback) {
-  onAuthStateChanged(auth, (user) => {
-    callback(user);
+  onAuthStateChanged(auth, async (user) => {
+    // 로그아웃 할때 빼고는 null인 경우가 없다.
+    const updatedUser = user ? await adminUser(user) : null;
+    callback(updatedUser);
   });
+}
+// export function onUserStateChange(callback) {
+//   onAuthStateChanged(auth, async (user) => {
+//     user && adminUser(user);
+//     callback(user);
+//   });
+// }
+
+async function adminUser(user) {
+  return get(child(dbRef, `admins`))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        const admins = snapshot.val();
+        console.log(snapshot.val());
+        const isAdmin = admins.includes(user.uid);
+        return { ...user, isAdmin };
+      } else {
+        console.log("No Admin");
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
