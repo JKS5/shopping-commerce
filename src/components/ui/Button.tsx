@@ -1,7 +1,8 @@
 import React from "react";
 interface Props {
   text: string;
-  onClick: () => void;
+  onClick: any;
+  // onClick: () => void;
 }
 
 export default function Button({ text, onClick }: Props) {
