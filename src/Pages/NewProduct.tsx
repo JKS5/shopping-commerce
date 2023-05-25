@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { addNewProduct } from "../api/firebase";
+import { uploadImage } from "../api/uploader";
 import Button from "../components/ui/Button";
 
 export default function NewProduct() {
-  const [files, setFiles] = useState<any>();
+  const [file, setFiles] = useState<any>();
   const [product, setProduct] = useState<any>();
+  const [success, setSuccess] = useState<any>();
+  const [isUpLoading, setIsUpLoading] = useState<any>();
   const handleChange = (e: any) => {
     const { name, value, files } = e.target;
     if (name === "file") {
@@ -14,12 +18,29 @@ export default function NewProduct() {
   };
   const onSubmit = (e: any) => {
     e.preventDefault();
-    //cloudinary로 product를 전송
+    setIsUpLoading(true);
+    uploadImage(file).then((url) => {
+      console.log(url);
+      addNewProduct(product, url)
+        .then(() => {
+          setSuccess("성공적으로 추가 되었습니다.");
+          setTimeout(() => setSuccess(null), 4000);
+        })
+        .finally(() => setIsUpLoading(false));
+    });
   };
   return (
-    <section>
-      <form onSubmit={onSubmit}>
-        {files && <img src={URL.createObjectURL(files)} alt="preview" />}
+    <section className="w-full text-center">
+      <h2 className="text-2xl font-bold my-4">제품 등록</h2>
+      {success && <p className="my-2">{success}</p>}
+      <form className="flex flex-col px-12" onSubmit={onSubmit}>
+        {file && (
+          <img
+            className="w-96 mx-auto mb-2"
+            src={URL.createObjectURL(file)}
+            alt="preview"
+          />
+        )}
         <input
           type="file"
           accept="image/*"
@@ -60,7 +81,10 @@ export default function NewProduct() {
           onChange={handleChange}
           required
         />
-        <Button text={"제품 등록 하기"} onClick={undefined} />
+        <Button
+          text={isUpLoading ? "업로드중..." : "제품 등록하기"}
+          disabled={isUpLoading}
+        />
       </form>
     </section>
   );
