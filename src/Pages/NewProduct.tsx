@@ -26,7 +26,10 @@ export default function NewProduct() {
           setSuccess("성공적으로 추가 되었습니다.");
           setTimeout(() => setSuccess(null), 4000);
         })
-        .finally(() => setIsUpLoading(false));
+        .finally(() => {
+          setProduct("");
+          setIsUpLoading(false);
+        });
     });
   };
   return (
@@ -64,7 +67,14 @@ export default function NewProduct() {
           onChange={handleChange}
           required
         />
-
+        <input
+          type="text"
+          name="category"
+          value={product?.category ?? ""}
+          placeholder="카테고리"
+          onChange={handleChange}
+          required
+        />
         <input
           type="text"
           name="description"
