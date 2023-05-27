@@ -13,7 +13,8 @@ export default function MyCart() {
   const totalPrice =
     products &&
     products.reduce(
-      (prev, current) => prev + parseInt(current.price) * current.quantity,
+      (prev, current) =>
+        prev + parseInt(current.price) * parseInt(current.quantity),
       0
     );
   if (isLoading) return <p>Loading</p>;
