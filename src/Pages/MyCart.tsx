@@ -7,10 +7,16 @@ import { BsFillPlusCircleFill } from "react-icons/bs";
 import { FaEquals } from "react-icons/fa";
 import PriceCard from "../components/PriceCard";
 import Button from "../components/ui/Button";
+import useCarts from "../hooks/useCarts";
 
 export default function MyCart() {
   const { uid } = useAuthContext();
-  const { isLoading, data: products } = useQuery(["carts"], () => getCart(uid));
+  // const { isLoading, data: products } = useQuery(["carts"], () => getCart(uid));
+
+  const {
+    cartsQuery: { isLoading, data: products },
+  } = useCarts();
+
   const totalPrice =
     products &&
     products.reduce(
