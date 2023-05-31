@@ -10,17 +10,16 @@ export default function useCarts() {
     enabled: !!uid,
   });
 
-  const plusCart = useMutation((uid, product) => addOrUpdateToCart(), {
-    onSuccess: () => queryClient.invalidateQueries(["carts"]),
+  const addOrUpdateItem = useMutation(
+    (product) => addOrUpdateToCart(uid, product),
+    {
+      onSuccess: () => queryClient.invalidateQueries(["carts", uid]),
+    }
+  );
+
+  const removeItem = useMutation((id) => removeFromCart(uid, id), {
+    onSuccess: () => queryClient.invalidateQueries(["carts", uid]),
   });
 
-  const minusCart = useMutation(() => addOrUpdateToCart(), {
-    onSuccess: () => queryClient.invalidateQueries(["carts"]),
-  });
-
-  const deleteCart = useMutation(() => removeFromCart(), {
-    onSuccess: () => queryClient.invalidateQueries(["carts"]),
-  });
-
-  return { cartsQuery, plusCart, minusCart, deleteCart };
+  return { cartsQuery, addOrUpdateItem, removeItem };
 }

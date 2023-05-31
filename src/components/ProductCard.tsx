@@ -17,6 +17,7 @@ export default function ProductCard({
 }: // key,
 Props) {
   const navigate = useNavigate();
+
   return (
     <li
       onClick={() => {
