@@ -8,7 +8,6 @@ export function AuthContextProvider({ children }: Props) {
   const [user, setUser] = useState<any>();
   useEffect(() => {
     onUserStateChange((user: any) => {
-      // console.log(user);
       setUser(user);
     });
   }, []);
