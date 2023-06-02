@@ -6,6 +6,7 @@ interface Props {
 const AuthContext = createContext<any>(null);
 export function AuthContextProvider({ children }: Props) {
   const [user, setUser] = useState<any>();
+
   useEffect(() => {
     onUserStateChange((user: any) => {
       setUser(user);

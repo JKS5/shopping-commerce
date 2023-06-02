@@ -9,7 +9,9 @@ interface Props {
 export default function ProtectedRoute({ children, requireAdmin }: Props) {
   const { user } = useAuthContext();
   //
-  if (!user || (requireAdmin && !user.isAdmin)) {
+  if (user === undefined || null) {
+    return <></>;
+  } else if (!user || (requireAdmin && !user.isAdmin)) {
     // ! 일단 if 문이 false여야지 들어가진다. 목표는 둘다 false
     // 1번
     // !user는 로그인한 유저인지 아닌지만 판단, 비로그인(user정보가)없으면 무조건 true로 만들어서 "/" home경로로 보내버림

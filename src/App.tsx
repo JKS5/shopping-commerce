@@ -6,6 +6,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { AuthContextProvider } from "./context/AuthContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Footer from "./components/Footer/Footer";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ function App() {
       <AuthContextProvider>
         <Navbar />
         <Outlet />
+        <Footer />
       </AuthContextProvider>
     </QueryClientProvider>
   );
