@@ -4,10 +4,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        brand: "#f96162",
+        brand: "#222222",
+        footer: "#757575",
       },
       backgroundImage: {
         banner: `url('../public/images/banner.jpg')`,
+      },
+      fontFamily: {
+        sans: ["graphik", "helvetica", "sans-serif"],
       },
     },
   },
