@@ -23,7 +23,7 @@ export default function Language() {
     handleLanguageSelect(language);
   };
   return (
-    <div className="relative text-sm text-sans">
+    <div className="relative text-sm text-sans text-brand">
       <div
         className="relative "
         onMouseEnter={() => setIsHovered(true)}

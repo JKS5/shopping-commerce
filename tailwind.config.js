@@ -10,6 +10,7 @@ module.exports = {
       backgroundImage: {
         banner: `url('../public/images/banner.jpg')`,
       },
+
       fontFamily: {
         sans: ["graphik", "helvetica", "sans-serif"],
       },

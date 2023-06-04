@@ -3,7 +3,7 @@ import FooterTop from "./FooterTop";
 
 export default function Footer() {
   return (
-    <footer>
+    <footer className=" border-t-[1px]">
       <FooterTop />
       <FooterDown />
     </footer>
