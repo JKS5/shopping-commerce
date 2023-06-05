@@ -43,12 +43,12 @@ export default function FooterTop() {
                 url={"https://naver.com"}
               />
               <ListOfFooter
-                text={"Asadal Markets"}
+                text={"Cavill Markets"}
                 onClick={clickMe}
                 url={"https://naver.com"}
               />
               <ListOfFooter
-                text={"Sell on Asadal"}
+                text={"Sell on Cavill"}
                 onClick={clickMe}
                 url={"https://naver.com"}
               />
@@ -82,19 +82,23 @@ export default function FooterTop() {
         </ul>
       </div>
       <div>
-        <h4>Get the Asadal app</h4>
+        <h4>Get the Cavill app</h4>
         <div></div>
-        Shop on the go, message brands, and track orders with the Asadal app.
+        Shop on the go, message brands, and track orders with the Cavill app.
         <div className="flex">
           <img
             src="/images/Footer/Apple-store-en.svg"
             alt="appleAppStore"
             className="w-36 cursor-pointer"
+            onClick={() => clickMe("https://www.apple.com/kr/macbook-air/")}
           />
           <img
             src="/images/Footer/Google-play-en.webp"
             alt="GoogleAppStore"
             className="w-44  cursor-pointer"
+            onClick={() =>
+              clickMe("https://store.google.com/us/category/phones?hl=en-US")
+            }
           />
         </div>
       </div>

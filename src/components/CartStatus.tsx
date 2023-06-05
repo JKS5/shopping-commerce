@@ -1,6 +1,6 @@
 import React from "react";
-import { AiOutlineShoppingCart } from "react-icons/ai";
 
+import { RiHandbagFill } from "react-icons/ri";
 import useCarts from "../hooks/useCarts";
 
 export default function CartStatus() {
@@ -8,14 +8,13 @@ export default function CartStatus() {
     cartsQuery: { data: products },
   } = useCarts();
   return (
-    <div className="relative">
-      <AiOutlineShoppingCart className="text-4xl" />
+    <div className="flex items-center">
+      <RiHandbagFill className="text-2xl" />
       {products && (
-        <p className="w-6 h-6 bg-brand text-center rounded-full absolute -top-1 -right-1 animate fade-in">
+        <p className="w-6 h-6 bg-red-300 text-center rounded-full animate fade-in">
           {products.length}
         </p>
       )}
-      {/* {products && <p>{products.length}</p>} */}
     </div>
   );
 }
