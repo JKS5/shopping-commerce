@@ -3,15 +3,18 @@ import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
 import ChangeUiPic from "./ChangeUiPic";
 export default function Banner() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [previousIndex, setPreviousIndex] = useState(0);
 
   const prevSlide = () => {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+    setPreviousIndex(currentIndex);
     setCurrentIndex(newIndex);
   };
   const nextSlide = () => {
     const isLastSlide = currentIndex === slides.length - 1;
     const nextIndex = isLastSlide ? 0 : currentIndex + 1;
+    setPreviousIndex(currentIndex);
     setCurrentIndex(nextIndex);
   };
   const slides = [
@@ -21,37 +24,101 @@ export default function Banner() {
       backgroundImage: `url('/images/Men/man_redSuit_Rings_Bag_Italy_Edited.jpg')`,
     },
   ];
-  return (
-    <div>
-      {/* <section className="h-96 bg-yellow-900 relative">
-        <div className="w-full h-full bg-cover bg-banner1 opacity-80" />
-        <div className="absolute w-full top-32 text-center text-gray-50 drop-shadow-2xl">
-          <h2 className="text-6xl">Shop With US</h2>
-          <p className="text-2xl">Best Products, High Quality</p>
-        </div>
-      </section> */}
 
-      <div className="relative max-w-[1920px]  h-[1080px] m-auto py-16 px-4 ">
+  const handleSlideClick = (index: number) => {
+    setPreviousIndex(currentIndex);
+    setCurrentIndex(index);
+  };
+  return (
+    <section className="">
+      <div
+        key={currentIndex}
+        className="relative max-w-[1920px]  h-[1080px] m-auto py-16 px-4 "
+      >
         <div
+          // This forces React to re-render the element and apply the animation class whenever currentIndex changes.
           style={{
             backgroundImage: `${slides[currentIndex].backgroundImage}`,
           }}
-          className={`bg-banner${currentIndex} w-full h-full bg-cover bg-center duration-500 `}
+          className={`w-4/6 h-full bg-cover duration-700 animate-fade-in `}
         />
-        <div className="absolute bottom-10 right-10 flex text-6xl">
-          <IoIosArrowRoundBack onClick={prevSlide} className="cursor-pointer" />
-          <IoIosArrowRoundForward
-            onClick={nextSlide}
-            className="cursor-pointer"
+        <div className="absolute bottom-1/4 right-8 flex text-6xl">
+          <div className="px-2">
+            <IoIosArrowRoundBack
+              onClick={prevSlide}
+              className="cursor-pointer "
+            />
+          </div>
+          <div className="px-2">
+            <IoIosArrowRoundForward
+              onClick={nextSlide}
+              className="cursor-pointer"
+            />
+          </div>
+        </div>
+        <div>
+          <div className="absolute top-96 right-4">
+            <p className="animate-text-fade-in">
+              <div
+                className={`flex w-full text-center ${
+                  currentIndex === 2 ? "text-gray-500" : ""
+                }`}
+              >
+                <p
+                  className={`px-2 font-bold  ${
+                    currentIndex === 2 ? "text-gray-600" : ""
+                  }`}
+                >
+                  {currentIndex < 2 ? "New" : " Pitti Immagine"}
+                </p>
+                <p className=" ">CLASSIC</p>
+              </div>{" "}
+            </p>
+            <h2 className="text-9xl font-semibold animate-text-fade-in">
+              {currentIndex < 2 ? (
+                <>
+                  New York <br /> Fashion Week
+                </>
+              ) : (
+                <>
+                  Italy <br /> Florance
+                </>
+              )}
+            </h2>
+            <br />
+            <div
+              key={currentIndex}
+              className="flex px-3  transition-all animate-btn-fade-in"
+            >
+              <button className="bg-black text-white w-36 h-12   ">
+                Shop Now
+              </button>
+              <div className="bg-black mx-[2px] w-[3px] h-12"></div>
+            </div>
+          </div>
+        </div>
+        <div className=" flex flex-col items-end absolute right-3 top-[400px]   ">
+          <ChangeUiPic
+            onClick={() => handleSlideClick(0)}
+            // key로 설정시 React의 reserved key와 conflick됨.
+            slidekey={0}
+            currentIndex={currentIndex}
+            previousIndex={previousIndex}
+          />
+          <ChangeUiPic
+            onClick={() => handleSlideClick(1)}
+            slidekey={1}
+            currentIndex={currentIndex}
+            previousIndex={previousIndex}
+          />
+          <ChangeUiPic
+            onClick={() => handleSlideClick(2)}
+            slidekey={2}
+            currentIndex={currentIndex}
+            previousIndex={previousIndex}
           />
         </div>
-
-        <div>
-          <ChangeUiPic onClick={() => setCurrentIndex(0)} />
-          <ChangeUiPic onClick={() => setCurrentIndex(1)} />
-          <ChangeUiPic onClick={() => setCurrentIndex(2)} />
-        </div>
       </div>
-    </div>
+    </section>
   );
 }
