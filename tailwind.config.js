@@ -41,6 +41,37 @@ module.exports = {
           "0%": { width: "48px", backgorundColor: "#ED1C24" },
           "100%": { width: "16px", backgroundColor: "#757575" },
         },
+        neon1: {
+          "20%": {
+            opacity: 1,
+          },
+          "80%": {
+            opacity: 0.6,
+          },
+        },
+        blink: {
+          "70%  ": {
+            opacity: 1,
+          },
+          "79%  ": {
+            opacity: 0,
+          },
+          "81%  ": {
+            opacity: 1,
+          },
+          "82%  ": {
+            opacity: 0,
+          },
+          "83%  ": {
+            opacity: 1,
+          },
+          "92%  ": {
+            opacity: 0,
+          },
+          "92.5% ": {
+            opacity: 1,
+          },
+        },
       },
       animation: {
         "fade-in": "fade-in-100px-0 1.5s ease-in-out",
@@ -50,6 +81,7 @@ module.exports = {
         "width-color-transition": "width-color-transition 0.6s ease-in-out ",
         "width-color-transition-reverse":
           "width-color-transition-reverse1 0.6s ease-in-out ",
+        glow: "blink linear infinite 2s 0s",
       },
     },
   },

@@ -1,6 +1,15 @@
-import React, { useState } from "react";
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
 import ChangeUiPic from "./ChangeUiPic";
+import { useState } from "react";
+
+const slides = [
+  { backgroundImage: `url('/images/Women/fashion_banner_Edited.jpg')` },
+  { backgroundImage: `url('/images/Men/man_With_Sunglassess_Edited.jpg')` },
+  {
+    backgroundImage: `url('/images/Men/man_redSuit_Rings_Bag_Italy_Edited.jpg')`,
+  },
+];
+
 export default function Banner() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [previousIndex, setPreviousIndex] = useState(0);
@@ -17,30 +26,24 @@ export default function Banner() {
     setPreviousIndex(currentIndex);
     setCurrentIndex(nextIndex);
   };
-  const slides = [
-    { backgroundImage: `url('/images/Women/fashion_banner_Edited.jpg')` },
-    { backgroundImage: `url('/images/Men/man_With_Sunglassess_Edited.jpg')` },
-    {
-      backgroundImage: `url('/images/Men/man_redSuit_Rings_Bag_Italy_Edited.jpg')`,
-    },
-  ];
 
   const handleSlideClick = (index: number) => {
     setPreviousIndex(currentIndex);
     setCurrentIndex(index);
   };
+
   return (
     <section className="">
       <div
+        // This Key forces React to re-render the element and apply the animation class whenever currentIndex changes.
         key={currentIndex}
         className="relative max-w-[1920px]  h-[1080px] m-auto py-16 px-4 "
       >
         <div
-          // This forces React to re-render the element and apply the animation class whenever currentIndex changes.
           style={{
             backgroundImage: `${slides[currentIndex].backgroundImage}`,
           }}
-          className={`w-4/6 h-full bg-cover duration-700 animate-fade-in `}
+          className={` w-4/6 h-full bg-cover duration-700 animate-fade-in `}
         />
         <div className="absolute bottom-1/4 right-8 flex text-6xl">
           <div className="px-2">
@@ -58,7 +61,7 @@ export default function Banner() {
         </div>
         <div>
           <div className="absolute top-96 right-4">
-            <p className="animate-text-fade-in">
+            <div className="animate-text-fade-in">
               <div
                 className={`flex w-full text-center ${
                   currentIndex === 2 ? "text-gray-500" : ""
@@ -73,7 +76,7 @@ export default function Banner() {
                 </p>
                 <p className=" ">CLASSIC</p>
               </div>{" "}
-            </p>
+            </div>
             <h2 className="text-9xl font-semibold animate-text-fade-in">
               {currentIndex < 2 ? (
                 <>

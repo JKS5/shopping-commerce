@@ -31,7 +31,7 @@ export default function Navbar() {
               <p className="text-2xl"> CAVILL </p>
             </Link>
             <div className="flex pl-28">
-              <DropDownList text={"Home"} />
+              <DropDownList text={"Home"} location={""} />
               <p
                 className="text-base p-4 flex items-end cursor-pointer hover:text-gray-500"
                 onMouseEnter={handleMouseEnter}
@@ -45,9 +45,9 @@ export default function Navbar() {
           </div>
         </div>
         <nav className="flex items-center gap-4 font-semibold">
-          <Link to="/products" className="text-base hover:text-gray-500">
+          {/* <Link to="/products" className="text-base hover:text-gray-500">
             Products
-          </Link>
+          </Link> */}
           {user && (
             <Link to="/carts">
               <CartStatus />
@@ -73,11 +73,11 @@ export default function Navbar() {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <DropDownList text={"Men"} />
-          <DropDownList text={"Women"} />
-          <DropDownList text={"Accessory"} />
-          <DropDownList text={"Shoes"} />
-          <DropDownList text={"Watch"} />
+          <DropDownList text={"Men"} location={"men"} />
+          <DropDownList text={"Women"} location={"women"} />
+          <DropDownList text={"Accessory"} location={"accessory"} />
+          <DropDownList text={"Shoes"} location={"shoes"} />
+          <DropDownList text={"Watch"} location={"watch"} />
         </ul>
       </div>
     </header>

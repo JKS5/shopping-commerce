@@ -13,7 +13,7 @@ export default function Home() {
       <section>시간 들어간 UI</section>
       <section>베스트셀러 Products 재사용과 스크롤</section>
       <section>이상한 블로그</section> */}
-      <Products />
+      {/* <Products /> */}
     </section>
   );
 }
