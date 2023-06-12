@@ -1,18 +1,24 @@
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
 import ChangeUiPic from "./ChangeUiPic";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const slides = [
-  { backgroundImage: `url('/images/Women/fashion_banner_Edited.jpg')` },
-  { backgroundImage: `url('/images/Men/man_With_Sunglassess_Edited.jpg')` },
+  { backgroundImage: `url('/images/Banner/fashion_banner_Edited.jpg')` },
+  { backgroundImage: `url('/images/Banner/man_With_Sunglasses_Edited.jpg')` },
   {
-    backgroundImage: `url('/images/Men/man_redSuit_Rings_Bag_Italy_Edited.jpg')`,
+    backgroundImage: `url('/images/Banner/man_redSuit_Rings_Bag_Italy_Edited.jpg')`,
   },
 ];
 
 export default function Banner() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [previousIndex, setPreviousIndex] = useState(0);
+  const navigate = useNavigate();
+
+  const navigateToMen = () => {
+    navigate("/products/men");
+  };
 
   const prevSlide = () => {
     const isFirstSlide = currentIndex === 0;
@@ -93,7 +99,10 @@ export default function Banner() {
               key={currentIndex}
               className="flex px-3  transition-all animate-btn-fade-in"
             >
-              <button className="bg-black text-white w-36 h-12   ">
+              <button
+                className="bg-black text-white w-36 h-12"
+                onClick={navigateToMen}
+              >
                 Shop Now
               </button>
               <div className="bg-black mx-[2px] w-[3px] h-12"></div>

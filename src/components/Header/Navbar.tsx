@@ -7,7 +7,7 @@ import User from "../User";
 import Button from "../ui/Button";
 import { useAuthContext } from "../../context/AuthContext";
 import { RiArrowDownSLine } from "react-icons/ri";
-import CartStatus from "../CartStatus";
+import CartStatus from "../Cart/CartStatus";
 import { useState } from "react";
 import DropDownList from "./DropDownList";
 
@@ -77,7 +77,7 @@ export default function Navbar() {
           <DropDownList text={"Women"} location={"women"} />
           <DropDownList text={"Accessory"} location={"accessory"} />
           <DropDownList text={"Shoes"} location={"shoes"} />
-          <DropDownList text={"Watch"} location={"watch"} />
+          <DropDownList text={"Ring"} location={"ring"} />
         </ul>
       </div>
     </header>
