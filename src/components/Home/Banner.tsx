@@ -1,7 +1,7 @@
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
 import ChangeUiPic from "./ChangeUiPic";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const slides = [
   { backgroundImage: `url('/images/Banner/fashion_banner_Edited.jpg')` },
