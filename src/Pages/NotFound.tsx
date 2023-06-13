@@ -12,7 +12,7 @@ export default function NotFound() {
           name changed or is temparaily unavaiable
         </p>
         <button className="border-2 text-white text-2xl flex items-center">
-          <Link to={"/"} className="text-sm mx-4 my-2">
+          <Link to={"/"} className="text-sm mx-4 my-2 animate-pulse ">
             Home Page
           </Link>
         </button>
