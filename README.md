@@ -31,9 +31,7 @@ Partial categorization accessible to non-logged-in users, logged-in users, and a
 ## Tech Stack
 Front-end: React.js, Tailwind
 
-Back-end: firebase, cloudinary
-
-Database: firebase
+Back-end & DB: firebase, cloudinary(Image)
 
 Deployment: Heroku
 
