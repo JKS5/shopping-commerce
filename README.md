@@ -35,7 +35,14 @@ Front-end: React.js, Tailwind
 
 Back-end & DB: firebase, cloudinary(Image)
 
-Deployment: Heroku
+Deployment: Vercel
+
+----------------
+프론트엔드: React.js, Tailwind
+
+백엔드 & 데이터 베이스: firebase, cloudinary(Image)
+
+배포: Vercel
 
 ## Usage
 1. 비로그인시 일반적인 Shop만 eyeshopping 가능
