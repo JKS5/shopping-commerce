@@ -26,7 +26,7 @@ Props) {
       }}
       className=" overflow-hidden cursor-pointer transition-all hover:scale-105 "
     >
-      <img className="w-full h-full hover:shadow-lg" src={image} alt={title} />
+      <img className="w-full hover:shadow-lg" src={image} alt={title} />
       <div className="mt-2 text-lg ">
         <p className="text-sm text-gray-400">{category}</p>
         <h3 className="truncate">{title}</h3>
