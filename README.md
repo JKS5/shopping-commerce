@@ -38,11 +38,11 @@ Database: firebase
 Deployment: Heroku
 
 ## Usage
-1. non-login can only eyeshop general shop
-2. Cart is available when logged in to Google
-3. If you want to use Admin, contact us, and if you register the uid received from Google API to firebase, you can even use the product registration function.
--------
 1. 비로그인시 일반적인 Shop만 eyeshopping 가능
 2. 구글 로그인시 Cart 사용 가능
 3. Admin 사용을 원한다면 연락, Google API에서 전달받은 uid를 firebase에 등록하여 등록된 User의 경우 상품 등록기능까지 사용가능
 
+-----
+1. non-login can only eyeshop general shop
+2. Cart is available when logged in to Google
+3. If you want to use Admin, contact us, and if you register the uid received from Google API to firebase, you can even use the product registration function.
