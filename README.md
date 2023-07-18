@@ -3,6 +3,8 @@
 포트폴리오를 위한 쇼핑 사이트입니다. 
 A shopping site for your portfolio. 
 
+URL:https://shopping-commerce-epcjscawa-jks5.vercel.app/
+
 ## Description
 CAVILL은 다양한 카테고리의 제품을 한데 모은 사용자 친화적인 온라인 쇼핑 플랫폼입니다.
 남녀 패션 아이템,악세사리,신발 등 트렌디한 제품을 찾고 있다면 바로 확인할 수 있는 경험을 제공합니다.
@@ -33,7 +35,14 @@ Front-end: React.js, Tailwind
 
 Back-end & DB: firebase, cloudinary(Image)
 
-Deployment: Heroku
+Deployment: Vercel
+
+----------------
+프론트엔드: React.js, Tailwind
+
+백엔드 & 데이터 베이스: firebase, cloudinary(Image)
+
+배포: Vercel
 
 ## Usage
 1. 비로그인시 일반적인 Shop만 eyeshopping 가능
@@ -44,3 +53,4 @@ Deployment: Heroku
 1. non-login can only eyeshop general shop
 2. Cart is available when logged in to Google
 3. If you want to use Admin, contact us, and if you register the uid received from Google API to firebase, you can even use the product registration function.
+
